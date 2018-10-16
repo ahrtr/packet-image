@@ -114,7 +114,7 @@ RUN curl -Lo /usr/local/bin/docker-machine-driver-kvm2 https://storage.googleapi
     chmod +x /usr/local/bin/docker-machine-driver-kvm2
 
 # Enable password login
-RUN sed -i 's/PasswordAuthentication.*$/PasswordAuthentication yes/g' /etc/ssh/sshd_config
+#RUN sed -i 's/PasswordAuthentication.*$/PasswordAuthentication yes/g' /etc/ssh/sshd_config
 
 # Download fedora image
 RUN wget --inet4-only https://download.fedoraproject.org/pub/fedora/linux/releases/28/Cloud/x86_64/images/Fedora-Cloud-Base-28-1.1.x86_64.qcow2
