@@ -98,19 +98,23 @@ RUN yum clean all
 # vim: set tabstop=4 shiftwidth=4:
 
 COPY kubernetes.repo /etc/yum.repos.d/kubernetes.repo
-RUN yum install -y -d1 libvirt libvirt-daemon-kvm wget kubectl && \
+COPY kvm.repo /etc/yum.repos.d/kvm.repo
+RUN yum install -y -d1 libvirt libvirt-daemon-kvm wget kubectl qemu-kvm && \
     usermod -aG libvirt root && \
     echo 'unix_sock_group = "libvirt"' > /etc/libvirt/libvirtd.conf && \
     echo 'unix_sock_rw_perms = "0770"' > /etc/libvirt/libvirtd.conf && \
     systemctl enable libvirtd
 
 # Install minikube
-RUN curl -Lo /usr/local/bin/minikube https://storage.googleapis.com/minikube/releases/v0.28.2/minikube-linux-amd64 && \
+RUN curl -Lo /usr/local/bin/minikube https://storage.googleapis.com/minikube/releases/v0.28.0/minikube-linux-amd64 && \
     chmod +x /usr/local/bin/minikube
 
 # Install kvm2 driver
 RUN curl -Lo /usr/local/bin/docker-machine-driver-kvm2 https://storage.googleapis.com/minikube/releases/latest/docker-machine-driver-kvm2 && \
     chmod +x /usr/local/bin/docker-machine-driver-kvm2
+
+# Enable password login
+RUN sed -i 's/PasswordAuthentication.*$/PasswordAuthentication yes/g' /etc/ssh/sshd_config
 
 # Download fedora image
 RUN wget --inet4-only https://download.fedoraproject.org/pub/fedora/linux/releases/28/Cloud/x86_64/images/Fedora-Cloud-Base-28-1.1.x86_64.qcow2
