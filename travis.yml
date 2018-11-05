@@ -1,0 +1,17 @@
+sudo: true
+# Use generic image to cut start-up time
+language: generic
+services:
+  - docker
+script:
+  - git lfs pull
+  - ./build.sh
+deploy:
+  provider: script
+  skip_cleanup: true
+  script: .travis/publish.sh
+  on:
+    branch: master
+branches:
+  only:
+    - master

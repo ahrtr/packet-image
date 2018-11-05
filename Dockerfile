@@ -106,7 +106,7 @@ RUN yum install -y -d1 libvirt libvirt-daemon-kvm wget kubectl qemu-kvm && \
     systemctl enable libvirtd
 
 # Install minikube
-RUN curl -Lo /usr/local/bin/minikube https://storage.googleapis.com/minikube/releases/v0.28.0/minikube-linux-amd64 && \
+RUN curl -Lo /usr/local/bin/minikube https://storage.googleapis.com/minikube/releases/v0.28.2/minikube-linux-amd64 && \
     chmod +x /usr/local/bin/minikube
 
 # Install kvm2 driver
