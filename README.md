@@ -1,5 +1,7 @@
 # Packet.net image to speed up testing of https://github.com/openshift/cluster-api-provider-libvirt
 
+[![Build Status](https://travis-ci.com/paulfantom/packet-image.svg?branch=master)](https://travis-ci.com/paulfantom/packet-image)
+
 ## How to build
 
 Follow https://help.packet.net/article/25-custom-images or in short:
