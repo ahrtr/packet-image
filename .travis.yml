@@ -11,7 +11,7 @@ install:
   - sudo mv packet-save2image /usr/bin/packet-save2image
 script:
   - git lfs pull
-  - ./build.sh
+  - sudo ./build.sh
 deploy:
   provider: script
   skip_cleanup: true
