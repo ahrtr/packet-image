@@ -1,8 +1,14 @@
+---
 sudo: true
-# Use generic image to cut start-up time
 language: generic
 services:
   - docker
+install:
+  - sudo apt update
+  - sudo apt install -y coreutils
+  - wget https://raw.githubusercontent.com/packethost/packet-images/master/tools/packet-save2image
+  - chmod +x packet-save2image
+  - sudo mv packet-save2image /usr/bin/packet-save2image
 script:
   - git lfs pull
   - ./build.sh
