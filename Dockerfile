@@ -118,3 +118,7 @@ RUN curl -Lo /usr/local/bin/docker-machine-driver-kvm2 https://storage.googleapi
 
 # Download fedora image
 RUN wget --inet4-only https://download.fedoraproject.org/pub/fedora/linux/releases/28/Cloud/x86_64/images/Fedora-Cloud-Base-28-1.1.x86_64.qcow2
+
+# Install docker
+RUN yum -y -d1 install docker && \
+    systemctl enable docker
